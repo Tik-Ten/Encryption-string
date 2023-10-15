@@ -2,7 +2,6 @@
 Letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]  # 26 Letter
 # Create values:
 dot = "."
-count = 1
 # get direction
 def direc():
     direction = input("type \"enc\" to encrypt or type \"dec\" to decrypt: ")
@@ -16,20 +15,33 @@ message = input('what is your massage? ').lower()
 try: shift = int(input("type the shift number: "))
 except: print("Unknow answer!"), exit()
 if direction == "enc":
-    message_len = len(message)
+    message_len = len(message) - 1
     counter = 0
     for i in range(message_len):
-        index = int(Letters.index(message[counter]) + shift)
-        print(f"Number {counter + 1}: " + Letters[index])
-        counter += 1
-else:
-    message_len = len(message)
-    counter = 0
-    for i in range(message_len):
-        index = int(Letters.index(message[counter]) - shift)
+        try:
+            index = int(Letters.index(message[counter]) + shift)
+        except:
+            print(f"Number {counter + 1}: " + message[i])
         if index > 26:
-            pass
-        print(f"Number {counter + 1}: " + Letters[index])
+            Distance = index - 26
+            print(f"Number {counter + 1}: " + Letters[Distance])
+            break
+        else:
+            print(f"Number {counter + 1}: " + Letters[index])
+        counter += 1
+elif direction == "dec":
+    message_len = len(message)
+    counter = 0
+    for i in range(message_len):
+        try:
+            index = int(Letters.index(message[counter]) - shift)
+        except:
+            print(f"Number {counter + 1}: " + message[i])
+        if index < 0:
+            Distance = index + 26
+            print(f"Number {counter + 1}: " + Letters[Distance])
+        else:
+            print(f"Number {counter + 1}: " + Letters[index])
         counter += 1
 
 # Alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'] * 2 
