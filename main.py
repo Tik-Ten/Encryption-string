@@ -13,25 +13,17 @@ if direction == "enc":
     for i in range(message_len):
         try:
             index = int(Letters.index(message[i]) + shift)
-            if index > 26:
-                Distance = index - 26
-                print(f"Number {i + 1}: " + Letters[Distance])
-            elif index < 26:
-                print(f"Number {i + 1}: " + Letters[index])
-        except:
-            print(f"Number {i + 1}: " + message[i])
+            if index > 26: Distance = index - 26, print(f"Number {i + 1}: " + Letters[Distance])
+            elif index < 26: print(f"Number {i + 1}: " + Letters[index])
+        except: print(f"Number {i + 1}: " + message[i])
 elif direction == "dec":
     message_len = len(message)
     for i in range(message_len):
         try:
             index = int(Letters.index(message[i]) - shift)
-            if index < 0:
-                Distance = index + 26
-                print(f"Number {i + 1}: " + Letters[Distance])
-            else:
-                print(f"Number {i + 1}: " + Letters[index])
-        except:
-            print(f"Number {i + 1}: " + message[i])
+            if index < 0: Distance = index + 26, print(f"Number {i + 1}: " + Letters[Distance])
+            else: print(f"Number {i + 1}: " + Letters[index])
+        except: print(f"Number {i + 1}: " + message[i])
 
 
 
